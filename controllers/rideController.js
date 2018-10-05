@@ -26,8 +26,8 @@ module.exports.controller = function (app) {
             fav_places: dataObj.fav_places,
             isActive: 1,
             role: dataObj.role,
-            updatedAt: new Date(),
-            createdAt: new Date(),
+            updatedAt: getFrmtDt(),
+            createdAt: getFrmtDt(),
             ridePlace: dataObj.ridePlace,
             isDeleted: 0
         }
@@ -56,12 +56,13 @@ module.exports.controller = function (app) {
             vehicleType: dataObj.vehicleType,
             vehicleColor: dataObj.vehicleColor,
             passWord: dataObj.passWord,
+            vehicleModel: dataObj.vehicleModel,
             vehicleLocation: JSON.stringify(dataObj.vehicleLocation),
             isActive: 1,
             role: 'Driver',
             isDeleted: 0,
-            createdAt: new Date(),
-            updatedAt: new Date()
+            createdAt: getFrmtDt(),
+            updatedAt: getFrmtDt()
         }
         db.query(sql, dataObj, function (err, data) {
             if (err)
@@ -220,7 +221,7 @@ module.exports.controller = function (app) {
                             res.send(err)
                         } else {
                             if (data && data.length > 0) {
-                                var sql = 'UPDATE ridesLog SET  status="CheckedIn", startAt = "' + new Date() + '" WHERE Id = "' + data[0]['Id'] + '"';
+                                var sql = 'UPDATE ridesLog SET  status="CheckedIn", startAt = "' + getFrmtDt() + '" WHERE Id = "' + data[0]['Id'] + '"';
                                 db.query(sql, '', function (err, data) {
                                     if (err)
                                         res.send(err)
@@ -324,7 +325,7 @@ module.exports.controller = function (app) {
             INTERVAL `+ interval + ` MINUTE) GROUP BY r.Id`;
         db.query(sql, '', function (err, data) {
             if (err) {
-                res.send(err)
+                console.error(err)
             } else {
                 if (data && data.length > 0) {
                     var updateSql = '';
@@ -410,12 +411,13 @@ function bookRide(sql, resData, rideObj, callback) {
                     endAt: '',
                     status: 'Booked',
                     distance: driverData['dist'].toFixed(2),
-                    // Amount: 50,
-                    // Duration: 15,
+                    Amount: 50,
+                    Duration: 15,
                     isActive: 1,
                     isDeleted: 0,
-                    createdAt: new Date(),
-                    updatedAt: new Date(),
+                    cancelledBy: '',
+                    createdAt: getFrmtDt(),
+                    updatedAt: getFrmtDt(),
 
                 }
                 var sql = 'INSERT INTO ridesLog SET ?;'
@@ -437,3 +439,9 @@ function bookRide(sql, resData, rideObj, callback) {
     })
 }
 
+function getFrmtDt() {
+    var date = new Date()
+    return date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDay() + ' '
+        + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
+
+}

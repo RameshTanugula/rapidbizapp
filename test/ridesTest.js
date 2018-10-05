@@ -26,6 +26,7 @@ describe('To Users Mocha `Testing', () => {
         "userName": "driver@nine.com",
         "phone": "94358848",
         "vehicleNumber": "kjdf98s",
+        "vehicleModel": "XYZ",
         "vehicleType": "kmndf00",
         "vehicleColor": "red",
         "passWord": "welcome",
@@ -150,7 +151,9 @@ describe('To Users Mocha `Testing', () => {
                 if (err) {
                     console.log('rides data status :', res.body.message);
                 } else {
-                    cancelRideId = res.body[0]['Id'];
+                    if (res.body && res.body.length > 0) {
+                        cancelRideId = res.body[0]['Id'];
+                    }
                     console.log('dides data status :', res.body);
                 }
             });
@@ -182,15 +185,15 @@ describe('To Users Mocha `Testing', () => {
             });
         });
     });
-    describe('To get rides data Testing', () => {
-        it('To get rides - Postive', function (done) {
+    describe('To get drivers data Testing', () => {
+        it('To get drivers - Postive', function (done) {
             this.timeout(5000);
             setTimeout(done, 3000);
             chai.request(app).get('/api/drivers').set('token', driverToken).end((err, res) => {
                 if (err) {
-                    console.log('get rides data status :', res.body.message);
+                    console.log('get drivers data status :', res.body.message);
                 } else {
-                    console.log('get rides data status :', res.body);
+                    console.log('get drivers data status :', res.body);
                 }
             });
         });

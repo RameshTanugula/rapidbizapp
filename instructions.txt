@@ -1,0 +1,49 @@
+You can Download the source code with the following command from GitHub
+	am attaching sample database also, please import it into your local database
+The database name is rides
+	we have three tables for this application
+		1.users, for users
+		2.drivers, for Drivers
+		3.ridesLog for rides
+ git clone https://github.com/RameshTanugula/rapidbizapp.git
+
+Steps to test after downloading the source code:
+ 	1.cd rapidbizapp
+	2.npm i --save
+	3.npm start
+	
+the server will run on localhost:3001
+
+Now got to localhost:3001,
+
+Here i'm giving the swagger api tool to test the apis.
+
+Creation of user: to create the user goto /api/register/user api and give the credentials, Here the User role is important to diffrentiate the authentication.
+role:'End User' for common user,
+role: 'Admin' for Admin user,
+
+Note:userName will Be the Email
+
+Creation Of Driver: to create the user goto /api/register/driver api and give the credentials, Here the driver role is important to diffrentiate the authentication.
+role:'Driver' for All Drivers, 
+
+Note:userName will Be the Email
+
+To login goto /api/login, give the type user for userLogin and driver for Driver Login, and here one Jwt token will generate. this token will helps us to handle the authentication.
+
+To book a ride goto /api/book/ride/ give the user login token as the token and lat1. long1 for from ride location and lat2 and long2 for toride location as the latitudes and longitudes. When the ride is get Booked the Driver will get Notify withe Email.
+
+To checkIn ride goto api/ride/checkin and give the user login token as the token for the user checkin ti the ride.
+
+To get the Rides list give the token of driver or user as the token to check the appropriate rides.
+
+To cancel the ride goto the /api/ride/cancel api and givr the Drive Id from which you want to cancel and give the login token as token.
+
+And Mean While if the Driver will not Accept the ride by the user with the checkin process with i the 15 minutes, the drive will get cancelled and the another ride will get booked to the respective user with the  next nearest driver.
+
+And i wrote the unit testing also for the assignment, to run the unit test run the following command in the project path command line
+
+npm test
+ 
+
+Thank you..!
