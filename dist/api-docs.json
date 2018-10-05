@@ -1,0 +1,571 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Book Rides OnLine"
+    },
+    "basePath": "/",
+    "tags": [
+        {
+            "name": "Tag1",
+            "description": "online book Documentation"
+        }
+    ],
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/text"
+    ],
+    "paths": {
+        "/api/users": {
+            "get": {
+                "tags": [
+                    "get users"
+                ],
+                "summary": "get users",
+                "description": "get users",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "header",
+                        "description": "To get users info, provide the following details.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/definitions/ResponseObj",
+                        "description": "get users successfully Fetched"
+                    },
+                    "400": {
+                        "$ref": "#/definitions/ResponseObj",
+                        "description": "Invalid data"
+                    },
+                    "500": {
+                        "$ref": "#/definitions/ResponseObj",
+                        "description": "An unknown error occurred"
+                    }
+                }
+            }
+        },
+        "/api/drivers": {
+            "get": {
+                "tags": [
+                    "get drivers"
+                ],
+                "summary": "get drivers",
+                "description": "get drivers",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "header",
+                        "description": "To get Drivers info, provide the following details.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/definitions/ResponseObj",
+                        "description": " get Drivers successfully Fetched"
+                    },
+                    "400": {
+                        "$ref": "#/definitions/ResponseObj",
+                        "description": "Invalid data"
+                    },
+                    "500": {
+                        "$ref": "#/definitions/ResponseObj",
+                        "description": "An unknown error occurred"
+                    }
+                }
+            }
+        },
+        "/api/ride/checkin": {
+            "get": {
+                "tags": [
+                    "get checkin"
+                ],
+                "summary": "get Checkin",
+                "description": "get Checkin",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "header",
+                        "description": "To get Checkin Drive info, provide the following details.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/definitions/ResponseObj",
+                        "description": "Checkin Drive successfully Fetched"
+                    },
+                    "400": {
+                        "$ref": "#/definitions/ResponseObj",
+                        "description": "Invalid data"
+                    },
+                    "500": {
+                        "$ref": "#/definitions/ResponseObj",
+                        "description": "An unknown error occurred"
+                    }
+                }
+            }
+        },
+        "/api/getrides": {
+            "get": {
+                "tags": [
+                    "get rides"
+                ],
+                "summary": "get rides",
+                "description": "get rides",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "header",
+                        "description": "To get rides info, provide the following details.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/definitions/ResponseObj",
+                        "description": "get rides successfully Fetched"
+                    },
+                    "400": {
+                        "$ref": "#/definitions/ResponseObj",
+                        "description": "Invalid data"
+                    },
+                    "500": {
+                        "$ref": "#/definitions/ResponseObj",
+                        "description": "An unknown error occurred"
+                    }
+                }
+            }
+        },
+        "/api/ride/cancel/{rideId}": {
+            "put": {
+                "tags": [
+                    "cancel ride"
+                ],
+                "summary": "cancel ride",
+                "description": "cancel ride",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "rideId",
+                        "in": "path",
+                        "description": "To cancel ride, provide the following details.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "token",
+                        "in": "header",
+                        "description": "To cancel ride, provide the following details.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/definitions/ResponseObj",
+                        "description": "cancel ride successfully Fetched"
+                    },
+                    "400": {
+                        "$ref": "#/definitions/ResponseObj",
+                        "description": "Invalid data"
+                    },
+                    "500": {
+                        "$ref": "#/definitions/ResponseObj",
+                        "description": "An unknown error occurred"
+                    }
+                }
+            }
+        },
+        "/api/register/driver": {
+            "post": {
+                "tags": [
+                    "rigister"
+                ],
+                "summary": "rigister Driver",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Driver",
+                        "in": "body",
+                        "description": "To rigister Driver, Provide the following details.",
+                        "required": true,
+                        "type": "string",
+                        "schema": {
+                            "$ref": "#/definitions/driverObj"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/definitions/ResponseObj",
+                        "description": "rigister Driver successful"
+                    },
+                    "400": {
+                        "$ref": "#/definitions/ResponseObj",
+                        "description": "Invalid data"
+                    },
+                    "500": {
+                        "$ref": "#/definitions/ResponseObj",
+                        "description": "An unknown error occurred"
+                    }
+                }
+            }
+        },
+        "/api/login/{type}": {
+            "post": {
+                "tags": [
+                    "Login"
+                ],
+                "summary": "Login",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "type",
+                        "in": "path",
+                        "description": "Please mention your login type user or driver",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Company",
+                        "in": "body",
+                        "description": "To Login, Provide the following details.",
+                        "required": true,
+                        "type": "string",
+                        "schema": {
+                            "$ref": "#/definitions/loginObj"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/definitions/ResponseObj",
+                        "description": "Login successful"
+                    },
+                    "400": {
+                        "$ref": "#/definitions/ResponseObj",
+                        "description": "Invalid data"
+                    },
+                    "500": {
+                        "$ref": "#/definitions/ResponseObj",
+                        "description": "An unknown error occurred"
+                    }
+                }
+            }
+        },
+        "/api/register/user": {
+            "post": {
+                "tags": [
+                    "Register"
+                ],
+                "summary": "Register User",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "User",
+                        "in": "body",
+                        "description": "To Register User, Provide the following details.",
+                        "required": true,
+                        "type": "string",
+                        "schema": {
+                            "$ref": "#/definitions/userObj"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/definitions/ResponseObj",
+                        "description": "Register User successful"
+                    },
+                    "400": {
+                        "$ref": "#/definitions/ResponseObj",
+                        "description": "Invalid data"
+                    },
+                    "500": {
+                        "$ref": "#/definitions/ResponseObj",
+                        "description": "An unknown error occurred"
+                    }
+                }
+            }
+        },
+        "/api/book/ride": {
+            "post": {
+                "tags": [
+                    "Book Ride"
+                ],
+                "summary": "Book a Ride",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "header",
+                        "description": "To book a ride, Provide the following details.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Company",
+                        "in": "body",
+                        "description": "To Book Ride, Provide the following details.",
+                        "required": true,
+                        "type": "string",
+                        "schema": {
+                            "$ref": "#/definitions/rideObj"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/definitions/ResponseObj",
+                        "description": "Book Ride successful"
+                    },
+                    "400": {
+                        "$ref": "#/definitions/ResponseObj",
+                        "description": "Invalid data"
+                    },
+                    "500": {
+                        "$ref": "#/definitions/ResponseObj",
+                        "description": "An unknown error occurred"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "ResponseObj": {
+            "type": "object",
+            "required": [
+                "status",
+                "message",
+                "result"
+            ],
+            "properties": {
+                "status": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "result": {
+                    "type": "object"
+                }
+            }
+        },
+        "loginObj": {
+            "type": "object",
+            "required": [
+                "userName",
+                "passWord"
+            ],
+            "properties": {
+                "loginObj": {
+                    "type": "object",
+                    "properties": {
+                        "userName": {
+                            "type": "string"
+                        },
+                        "passWord": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "driverObj": {
+            "type": "object",
+            "required": [
+                "firstName",
+                "lastName",
+                "userName",
+                "phone",
+                "vehicleNumber",
+                "vehicleModel",
+                "vehicleColor",
+                "vehicleType",
+                "passWord",
+                "vehicleLocation"
+            ],
+            "properties": {
+                "driverObj": {
+                    "type": "object",
+                    "properties": {
+                        "firstName": {
+                            "type": "string"
+                        },
+                        "lastName": {
+                            "type": "string"
+                        },
+                        "userName": {
+                            "type": "string"
+                        },
+                        "phone": {
+                            "type": "string"
+                        },
+                        "vehicleNumber": {
+                            "type": "string"
+                        },
+                        "vehicleType": {
+                            "type": "string"
+                        },
+                        "vehicleColor": {
+                            "type": "string"
+                        },
+                        "passWord": {
+                            "type": "string"
+                        },
+                        "vehicleLocation": {
+                            "type": "object",
+                            "required": [
+                                "lat",
+                                "long"
+                            ],
+                            "properties": {
+                                "lat": {
+                                    "type": "string"
+                                },
+                                "long": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "userObj": {
+            "type": "object",
+            "required": [
+                "firstName",
+                "lastName",
+                "userName",
+                "phone",
+                "fav_places",
+                "passWord",
+                "ridePlace",
+                "role"
+            ],
+            "properties": {
+                "userObj": {
+                    "type": "object",
+                    "properties": {
+                        "firstName": {
+                            "type": "string"
+                        },
+                        "lastName": {
+                            "type": "string"
+                        },
+                        "userName": {
+                            "type": "string"
+                        },
+                        "passWord": {
+                            "type": "string"
+                        },
+                        "phone": {
+                            "type": "string"
+                        },
+                        "fav_places": {
+                            "type": "string"
+                        },
+                        "ridePlace": {
+                            "type": "string"
+                        },
+                        "role": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "rideObj": {
+            "type": "object",
+            "required": [
+                "lat1",
+                "long1",
+                "lat1",
+                "long2"
+            ],
+            "properties": {
+                "rideObj": {
+                    "type": "object",
+                    "properties": {
+                        "lat1": {
+                            "type": "number"
+                        },
+                        "lat2": {
+                            "type": "number"
+                        },
+                        "long1": {
+                            "type": "number"
+                        },
+                        "long2": {
+                            "type": "number"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
